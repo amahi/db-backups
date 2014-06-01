@@ -5,7 +5,7 @@ class BackupappsController < ApplicationController
 		@dbs = Db.all;
 		@backup_updated = []
 		@dbs.each do |db|
-			@backup_updated << Backup.where(:db_id=>db.id).first.backedup_at
+			@backup_updated << Backup.where(:db_id=>db.id).first.backedup_at if Backup.where(:db_id=>db.id).first
 		end
 
 		# do your main thing here
