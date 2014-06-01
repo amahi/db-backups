@@ -1,0 +1,22 @@
+.settings-table#backup-table
+  - if @dbs.any?
+    table.settings
+      thead
+        tr
+          th.settings-col1.users-col1[scope="col"]= "App Db"
+          th.settings-col1.users-col2[scope="col"]= "Last Backed Up at"
+          th.settings-col1.users-col2[scope="col"]= "Action"
+        - @dbs.each_with_index do |db,index|
+          tr
+            td.db_title = db.name
+            - if @backup_updated[index]!=nil
+              td.last_update_at = @backup_updated[index]
+            - else
+              td.last_update_at "Not Backed up yet"
+            td.backup
+              = link_to "Back up", backupapps_engine.backup_path(:db_id=>db.id),:method=>:post, :data=>{}
+
+
+  - else
+    .no-users
+      h2= t('there_are_no_users')
