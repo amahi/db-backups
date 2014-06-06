@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    backupapps (0.0.1)
+    dbbackups (0.0.1)
       jquery-rails
       rails (~> 3.2.12)
 
@@ -93,6 +93,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  backupapps!
+  dbbackups!
   jquery-rails
   sqlite3

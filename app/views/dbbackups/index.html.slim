@@ -4,14 +4,14 @@
     table.settings
       thead
         tr
-          th.settings-col1.dbbackup-col1= "Database"
-          th.settings-col1.dbbackup-col2= "Backed Up"
+          th.settings-col1.dbbackup-col1= t 'database'
+          th.settings-col1.dbbackup-col2= t 'backed_up'
         - @dbs.each_with_index do |db,index|
           tr
             td.db_title.dbbackup-col1 = App.where(:db_id=>db.id).first.name
             - if @backup_updated[index]!=nil
               td.last_update_at
-              	span.backup_content = @backup_updated[index]
+              	span.backup_content = time_ago_in_words(@backup_updated[index].localtime)+ " ago"
               	span.backup_content= link_to "", dbbackups_engine.backup_path(:db_id=>db.id),:method=>:post, :class=>"download_link"
             - else
               td.last_update_at.dbbackup-col2
@@ -21,4 +21,4 @@
 
   - else
     .no-users
-      h2= t('there_are_no_users')
+      h2= t('there_are_no_dbs')
