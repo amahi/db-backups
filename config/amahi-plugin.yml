@@ -1,6 +1,6 @@
 # human readable name (no localization supported yet)
-name: Backupapp
+name: Dbbackups
 # class to be mounted
-class: Backupapps
+class: Dbbackups
 # root url where this plugin will be mounted
-url: /tab/apps/backupapps
+url: /tab/apps/dbbackups

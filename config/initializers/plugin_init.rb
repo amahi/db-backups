@@ -1,4 +1,4 @@
 # plugin initialization
 t = Tab.find("apps")
 # add any subtabs with what you need. params are controller and the label, for example
-t.add("backupapps", "backupapps")
+t.add("dbbackups", "DB Backups")

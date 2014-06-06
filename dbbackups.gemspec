@@ -1,12 +1,12 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "backupapps/version"
+require "dbbackups/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "backupapps"
-  s.version     = Backupapp::VERSION
+  s.name        = "dbbackups"
+  s.version     = Dbbackups::VERSION
   s.authors     = ["Your Name"]
   s.email       = ["your@email.example.com"]
   s.homepage    = "http://www.amahi.org/apps/yourapp"

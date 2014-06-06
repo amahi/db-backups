@@ -23,7 +23,7 @@ class Backup < ActiveRecord::Base
 		password = self.db.password
 		user = self.db.username
 		dbname = self.db.name
-		filename = Time.now.strftime("#{DB_BACKUPS_DIR}/%y%m%d-%H%M%S-#{user}.sql.bz2")
+		filename = Time.now.strftime("%y%m%d%H%M%S-#{dbname}.sql.bz2")
 		system("mysqldump --add-drop-table -u#{user} -p#{password} #{dbname} | bzip2 > #{filename}")
 		filename
 	end

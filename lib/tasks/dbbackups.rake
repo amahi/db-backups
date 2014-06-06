@@ -1,4 +1,4 @@
 # desc "Explaining what the task does"
-# task :backupapps do
+# task :dbbackups do
 #   # Task goes here
 # end

@@ -1,7 +1,8 @@
-class BackupappsController < ApplicationController
+class DbbackupsController < ApplicationController
 	before_filter :admin_required
 
 	def index
+		@page_title = "DB Backups"
 		@dbs = Db.all;
 		@backup_updated = []
 		@dbs.each do |db|
@@ -23,14 +24,4 @@ class BackupappsController < ApplicationController
 		b.set_backup_update_to_now
 		send_file Rails.root.join(filename)
 	end
-
-
-
-#	def settings
-#		# do the settings page here
-#	end
-
-#	def advanced
-#		# do the advanced settings page here
-#	end
 end
