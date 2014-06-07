@@ -7,16 +7,17 @@
           th.settings-col1.dbbackup-col1= t 'database'
           th.settings-col1.dbbackup-col2= t 'backed_up'
         - @dbs.each_with_index do |db,index|
-          tr
-            td.db_title.dbbackup-col1 = App.where(:db_id=>db.id).first.name
-            - if @backup_updated[index]!=nil
-              td.last_update_at
-              	span.backup_content = time_ago_in_words(@backup_updated[index].localtime)+ " ago"
-              	span.backup_content= link_to "", dbbackups_engine.backup_path(:db_id=>db.id),:method=>:post, :class=>"download_link"
-            - else
-              td.last_update_at.dbbackup-col2
-              	span.backup_content -
-              	span.backup_content= link_to "Back up", dbbackups_engine.backup_path(:db_id=>db.id),:method=>:post, :class=>"download_link"
+          - if App.where(:db_id=>db.id).first
+            tr
+              td.db_title.dbbackup-col1 = App.where(:db_id=>db.id).first.name
+              - if @backup_updated[index]!=nil
+                td.last_update_at
+                	span.backup_content = time_ago_in_words(@backup_updated[index].localtime)+ " ago"
+                	span.backup_content.download_icon= link_to "", dbbackups_engine.backup_path(:db_id=>db.id),:method=>:post, :class=>"download_link"
+              - else
+                td.last_update_at.dbbackup-col2
+                	span.backup_content -------
+                	span.backup_content.download_icon= link_to "Back up", dbbackups_engine.backup_path(:db_id=>db.id),:method=>:post, :class=>"download_link"
 
 
   - else
