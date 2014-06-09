@@ -13,9 +13,9 @@
 # You should have received a copy of the GNU General Public
 # License along with this program; if not, write to the Amahi
 # team at http://www.amahi.org/ under "Contact Us."
+require 'fileutils'
 class Backup < ActiveRecord::Base
-
-	DB_BACKUPS_DIR = "tmp"
+	DB_BACKUPS_DIR = "tmp/backups"
 	belongs_to :db
 
 
@@ -23,7 +23,9 @@ class Backup < ActiveRecord::Base
 		password = self.db.password
 		user = self.db.username
 		dbname = self.db.name
-		filename = Time.now.strftime("%y%m%d%H%M%S-#{dbname}.sql.bz2")
+		FileUtils.rm_rf DB_BACKUPS_DIR
+		FileUtils.mkdir DB_BACKUPS_DIR
+		filename = Time.now.strftime("#{DB_BACKUPS_DIR}/%y%m%d%H%M%S-#{dbname}.sql.bz2")
 		system("mysqldump --add-drop-table -u#{user} -p#{password} #{dbname} | bzip2 > #{filename}")
 		filename
 	end
