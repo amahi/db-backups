@@ -1,7 +1,7 @@
 = stylesheet_link_tag "dbbackups"
 .settings-table#backup-table
   - if @dbs.any?
-    table.settings
+    table.settings.table
       thead
         tr
           th.settings-col1.dbbackup-col1= t 'database'
