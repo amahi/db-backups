@@ -1,6 +1,6 @@
 = stylesheet_link_tag "dbbackups"
-.settings-table#backup-table
-  - if @dbs.any?
+- if !@dbs.any?
+  .settings-table#backup-table
     table.settings.table
       thead
         tr
@@ -18,8 +18,6 @@
                 td.last_update_at.dbbackup-col2
                 	span.backup_content -------
                 	span.backup_content.download_icon= link_to "Back up", dbbackups_engine.backup_path(:db_id=>db.id),:method=>:post, :class=>"download_link"
-
-
-  - else
-    .no-users
-      h2= t('there_are_no_dbs')
+- else
+  .no-apps
+    h2= t('there_are_no_dbs')
