@@ -1,16 +1,11 @@
 .dbbackup-col1,.dbbackup-col2{
 	padding-left: 30px;
-	padding-top: 10px;
-}
-.settings-table{
-margin-top: 30px;
 }
 
 .backup_content{
 	margin-right: 20px;
 
 }
-
 .download_link{
 
 	background: url("images/download.png");
