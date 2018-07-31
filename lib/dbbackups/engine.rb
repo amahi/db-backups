@@ -5,7 +5,15 @@ module Dbbackups
 		# platform hard to reach from here
 		# isolate_namespace Dbbackups
 		initializer :assets do |config|
-	      Rails.application.config.assets.paths << root.join("app", "assets", "images")
-	    end
+			Rails.application.config.assets.paths << root.join("app", "assets", "images")
+		end
+
+		initializer :append_migrations do |app|
+			unless app.root.to_s.match root.to_s
+				config.paths["db/migrate"].expanded.each do |expanded_path|
+					app.config.paths["db/migrate"] << expanded_path
+				end
+			end
+		end
 	end
 end
